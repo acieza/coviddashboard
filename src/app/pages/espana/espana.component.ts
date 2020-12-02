@@ -30,6 +30,7 @@ export class EspanaComponent implements OnInit {
   listado2=["2","3","5"];
 
   datos=[0,2,3,4,5,6];
+  etiquetas=['Enero','Febrero','Marzo','Abril','Mayo','Junio'];
 
   ngOnInit(): void {
     
@@ -55,17 +56,21 @@ export class EspanaComponent implements OnInit {
         //let fecha="2020-11-25";
        // let listado= Array;
         this.listado = datosmundo.dates;
+        
         for (let x=0; x<fechas.lista.length;x++){
+        
         this.entrefechas[x]=this.listado[fechas.lista[x]].countries.Spain;
          // console.log(this.listado[fechas.lista[x]].countries.Spain);  
         }
      //   console.log(this.entrefechas);
-      
+       
         this.cargaGraficas();
       })
+     
   }
   //datos: Array<number>=[];
     cargaGraficas(){
+      
       let longitud = this.datos.length;
       this.datos.splice(0,longitud);
       for (let x=0; x<this.entrefechas.length;x++){
@@ -77,18 +82,24 @@ export class EspanaComponent implements OnInit {
   /// graficas ///
 lineChartData: ChartDataSets[]=[
   { data: this.datos,
-    label: 'Numero de Recuperados'}
+    label: 'Numero de Recuperados',
+    
+    
+  }
+  
   ];
 
-lineChartLabels: Label[] = ['Enero','Febrero','Marzo','Abril','Mayo','Junio'];
+  lineChartLabels: Label[] = this.etiquetas;
+
 
 lineChartOptions = {
+  
   responsive:true,};
 
 lineChartColors: Color[] =[
   {
     borderColor:'black',
-    backgroundColor:'rgba(255,255,0,1)',
+    backgroundColor:'rgba(0,0,0,1)',
   },
 ];
 
